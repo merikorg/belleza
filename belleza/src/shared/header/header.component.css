@@ -1,0 +1,9 @@
+.parallax-text {
+    position: absolute; /* Posición absoluta para el texto */
+    top: 50%; /* Alinea el texto verticalmente en el centro */
+    left: 50%; /* Alinea el texto horizontalmente en el centro */
+    transform: translate(-50%, -50%); /* Centra el texto */
+    font-size: 36px;
+    color: white; /* Color del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+}
