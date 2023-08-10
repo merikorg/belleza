@@ -6,10 +6,87 @@
 </div>
 <div class="content">
   <div class="container">
-    <div class="row">
-      <div class="col my-4">
-        <app-card-product></app-card-product>
+    <div class="row flex-wrap">
+      <div class="col-lg-3 col-md-4 col-sm-6 my-4" *ngFor="let card of cards">
+        <app-card-product
+          [item]="card"
+          (alert)="listening($event)"
+        >
+        </app-card-product>
       </div>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="alert"
+  [ngClass]="{
+    alert: true,
+    'alert-success': type === 'success',
+    'alert-danger': type === 'danger'
+  }"
+  role="alert"
+>
+  {{ text }}
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="ModalCart"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Carrito de Compras
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #CloseModal
+        ></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <app-card-product-modal [item]="arrayModal"></app-card-product-modal>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="direccion" class="form-label">Dirección</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="direccion"
+                    aria-describedby="emailHelp"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="cedula" class="form-label">Cédula</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cedula"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -1,1 +1,19 @@
-<p>card-product-modal works!</p>
+<div class="container">
+    <div class="row align-items-center border rounded p-3 my-3" *ngFor="let product of item">
+        <div class="col-md-3">
+            <img [src]="product.url" alt="" class="img-fluid rounded">
+        </div>
+        <div class="col-md-9">
+            <h5>{{ product.title }}</h5>
+            <p>{{ product.description }}</p>
+            <p>{{ product.price }}</p>
+        </div>
+    </div>
+    <div class="row text-center my-5">
+        <div class="col">
+            <h4>
+                {{ item.length > 0 ? 'Precio total: ' + (total | currency:'COP') : 'Agregue su producto!' }}
+              </h4>              
+        </div>
+    </div>
+</div>
