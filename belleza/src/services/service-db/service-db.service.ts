@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse  } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,21 +16,18 @@ export class ServiceDbService {
 
   constructor(private http: HttpClient) { }
 
-  getData(post:string) {
-    let query = {
+  getData(post: string): Observable<any> {
+    const query = {
       query: post,
       key: this.key      
-    }
+    };
+
     return this.http.post<any>(this.baseUrl, query).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.error =  'Ha ocurrido un error al consultar. Intente de nuevo.';
+        console.error('Ha ocurrido un error al consultar. Intente de nuevo.', error);
         return throwError('Ocurrió un error en la solicitud.');
       })
     );
-  }
-
-  getError(){
-    return this.error;
   }
 
 } 

@@ -9,9 +9,8 @@ import { Component,Input,OnInit } from '@angular/core';
 export class CardProductModalComponent implements OnInit {
   @Input() item:any[] = [];
 
-  total: number = 0 ;
 
-  constructor() {
+  constructor() { 
   }
 
   ngOnInit(): void {

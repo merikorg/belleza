@@ -1,11 +1,22 @@
 <div class="card" style="width: 18rem">
   <img [src]="item.url" class="card-img-top" alt="..." />
   <div class="card-body">
-    <h5 class="card-title">{{ item.title }}</h5>
+    <h5 class="card-title">{{ item.name }}</h5>
     <p class="card-text">
       {{ item.description }}
-      {{ item.price }}
     </p>
-    <button type="button" class="btn btn-outline-success" (click)="sendData(item)">Agregar al carrito</button>
+    <p>
+      Precio: {{ item.price }}
+    </p>
+    <p>
+      Inventario: {{ item.inventory }}
+    </p>
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="sendData(item)"
+    >
+      Agregar al carrito
+    </button>
   </div>
 </div>

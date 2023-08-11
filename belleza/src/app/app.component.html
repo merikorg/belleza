@@ -8,10 +8,7 @@
   <div class="container">
     <div class="row flex-wrap">
       <div class="col-lg-3 col-md-4 col-sm-6 my-4" *ngFor="let card of cards">
-        <app-card-product
-          [item]="card"
-          (alert)="listening($event)"
-        >
+        <app-card-product [item]="card" (alert)="listening($event)">
         </app-card-product>
       </div>
     </div>
@@ -38,7 +35,7 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-dialog-scrollable modal-lg ">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -52,12 +49,27 @@
           #CloseModal
         ></button>
       </div>
-      <form>
+      <form [formGroup]="formModal" (ngSubmit)="addData()">
         <div class="modal-body">
           <div class="container">
             <div class="row">
               <div class="col">
-                <app-card-product-modal [item]="arrayModal"></app-card-product-modal>
+                <div class="container">
+                  <app-card-product-modal
+                    [item]="arrayModal"
+                  ></app-card-product-modal>
+                  <div class="row text-center my-5">
+                    <div class="col">
+                      <h4>
+                        {{
+                          arrayModal.length > 0
+                            ? "Precio total: " + (total | currency : "COP")
+                            : "Agregue su producto!"
+                        }}
+                      </h4>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col">
                 <div class="mb-3">
@@ -67,6 +79,7 @@
                     class="form-control"
                     id="direccion"
                     aria-describedby="emailHelp"
+                    formControlName="direction"
                     required
                   />
                 </div>
@@ -75,6 +88,7 @@
                   <input
                     type="number"
                     class="form-control"
+                    formControlName="document"
                     id="cedula"
                     required
                   />
