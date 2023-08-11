@@ -5,12 +5,13 @@ class Conexion
   public function getConexion()
   {
     try {
-      $serverName = "DESKTOP-HPFPM38";
+      $serverName = "localhost";
       $dbName = "belleza";
-      $user = "DESKTOP-HPFPM38/DESARROLLO CEDIT 1";
+      $user = "";
       $password= "" ; 
+      $port=1433;
 
-      $conn = new PDO("sqlsrv:Server=$serverName;Database=$dbName", $user, $password);
+      $conn = new PDO("sqlsrv:Server=$serverName,$port;Database=$dbName", $user, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       return $conn;
