@@ -69,7 +69,7 @@ export class AppComponent {
 
   addData(){
     if(this.formModal.valid && this.arrayModal.length>0){
-
+      
     }else{
       this.type='danger';
       this.text='No se puede dejar campos vacios.';
